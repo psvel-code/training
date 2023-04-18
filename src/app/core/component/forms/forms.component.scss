@@ -1,0 +1,27 @@
+*{
+  color: black;
+}
+.container{
+  background-color: rgb(227, 221, 221);
+  padding : 50px;
+  font-size: 16px;
+  font-weight: 500;
+  
+}
+.contacts{
+  margin: 20px 0;
+  text-align: center;
+}
+.page_container{
+  border: 1px solid black;
+  background-color: white;
+  padding: 20px;
+}
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+  margin-left: 16px;
+}
+//input field Outline radius
+.mat-mdc-form-field {
+  --mdc-shape-small: 0px;
+  
+}

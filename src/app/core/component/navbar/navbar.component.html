@@ -1,0 +1,36 @@
+<div>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row class="nav">
+      <span> Internship</span>
+      <span class="menu-spacer"></span>
+      <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <div fxShow="true" fxHide.lt-md>
+        <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+        <a class="btn" mat-button routerLink="/app/home" routerLinkActive="active_link"> Home</a>
+        <a class="btn" routerLink="/app/table" routerLinkActive="active_link" mat-button> Table </a>
+        <a class="btn" routerLink="/app/forms" routerLinkActive="active_link" mat-button> Forms </a>
+        <a class="btn" routerLink="/app/pipes" routerLinkActive="active_link" mat-button> pipes </a>
+        <a class="btn" routerLink="/app/observables" routerLinkActive="active_link" mat-button> Observables </a>
+        <a class="btn" routerLink="/app/loading" routerLinkActive="active_link" mat-button> Loading </a>
+        <a class="btn" routerLink="/login" (click)="this.auth.logout()" routerLinkActive="active_link" mat-button> <mat-icon>logout</mat-icon>
+        </a>
+      </div>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-sidenav-container fxFlexFill>
+    <mat-sidenav #sidenav mode="side" [fxHide.lt-md]="side_n">
+      <mat-nav-list>
+        <a routerLink="/app/home" mat-list-item> Home</a>
+        <a routerLink="/app/table" mat-list-item> Table </a>
+        <a routerLink="/app/counter" mat-list-item> counter </a>
+        <a routerLink="/app/forms" mat-list-item> Forms </a>
+        <a routerLink="/app/pipes" mat-list-item> Pipes </a>
+        <a routerLink="/app/observables" mat-list-item>Observables </a>
+        <a routerLink="/app/loading" mat-list-item>Loading </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlexFill><router-outlet></router-outlet></mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

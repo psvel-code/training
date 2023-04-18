@@ -1,0 +1,130 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@600&family=Poppins:wght@300&display=swap');
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// task2
+.body_task_2 .mat-mdc-form-field-infix {
+  width: 100px !important;
+  border: none !important;
+}
+
+.body_task_2 .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.body_task_2 .mat-mdc-form-field-infix {
+  width: 100px !important;
+}
+
+.body_task_2 .mat-mdc-form-field-infix {
+  min-height: 25px !important;
+}
+
+.body_task_2 .mat-mdc-select {
+  font-size: 11px;
+}
+
+.body_task_2 .mat-mdc-option {
+  font-size: 12px;
+  padding-left: 7px !important;
+}
+
+.body_task_2 .mdc-text-field--outlined {
+  padding-left: 10px !important;
+  padding-right: 7px !important;
+}
+
+.login_parent .mdc-text-field {
+  padding: 0;
+}
+
+.mdc-text-field--focused .mdc-notched-outline__leading,
+.mdc-text-field--focused .mdc-notched-outline__notch,
+.mdc-text-field--focused .mdc-notched-outline__trailing {
+  border-width: none !important;
+}
+
+.body_task_2 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.body_task_2 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.body_task_2 .mdc-text-field--outlined:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+  border-color: transparent;
+}
+
+.body_task_2 :focus-visible {
+  outline: none !important;
+}
+
+.body_task_2 mat-form-field:hover {
+  outline: transparent !important;
+  box-shadow: transparent !important;
+}
+
+.body_task_2 .body_task_2.plus .mdc-button .mdc-button__label {
+  padding-left: 0.5px !important;
+  font-size: 15px;
+}
+
+.body_task_2.mdc-text-field .mdc-floating-label {
+  top: 18px !important;
+}
+
+
+//forms input height
+.forms .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.forms .mat-mdc-form-field-flex {
+  height: 35px !important;
+}
+
+// .mat-mdc-form-field-infix {
+//   min-height: 40px;
+// }
+
+.forms .mat-mdc-text-field-wrapper.mdc-text-field--outlined .mat-mdc-form-field-infix {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+// snackbar
+.mdc-snackbar__surface {
+  background-color: transparent !important;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+//LOGIN 
+
+
+.login_parent .mdc-text-field {
+  background-color: white !important;
+  padding: 0 !important;
+}
+
+.login_parent .mdc-line-ripple:focus {
+  content: none !important
+}
+
+.login_parent .mat-mdc-form-field-focus-overlay {
+  background-color: white !important;
+}

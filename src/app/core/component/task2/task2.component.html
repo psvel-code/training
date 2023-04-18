@@ -1,0 +1,80 @@
+<div class="body_task_2" fxFlex="100%" fxLayoutAlign="center">
+  <div class="parent" fxFlex="70%" fxFlex.lt-lg="90%" fxFlex.lt-sm="100%" fxLayout="row" fxLayout.lt-md="column">
+    <div class="left" fxFlex="53.8%" fxFlex.lt-md="100%" fxLayout="column">
+      <div class="shampoo" ngStyle.lt-lg="font-size: 50px;" ngStyle.lt-sm="font-size: 35px;">MR Shampoo</div><br>
+      <h3 class="clean" ngStyle.lt-sm="font-size: 25px;">Cleanse + Soften</h3>
+      <div class="left_pic" fxFlex="100%">
+        <img src="../assets/images/left-1.png" alt="shampoo">
+      </div><br>
+      <div class="price">${{price}}</div>
+      <br>
+      <div class="counter" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="circle_btn_3"><button mat-fab color="white"> +
+        </button></div>
+        <div class="count">{{count}}</div>
+        <button mat-fab color="white" class="circle_btn_1" (click)="minus()"> -
+        </button>
+      </div><br><br>
+      <div fxLayoutAlign="center center" >
+        <button fxFlex="64%" fxLayoutAlign="center center" mat-button class="cart">ADD TO CART</button>
+      </div>
+      <br>
+      <div class="text">
+        My tear free Kylie Baby Gentle Shampoo cleanses and softens hair and is
+        suitable for delicate hair and sensitive scalp. The moisture-rich formula
+        delivers a creamy lather to cleanse hair without drying it out, and is ideal
+        for babies and kids of all ages.
+      </div>
+    </div>
+    <!-- ruler -->
+    <div class="ruler" fxFlex.gt-sm="0.02%"></div>
+    <!-- right-side -->
+    <div class="right" fxLayout="column" fxFlex="45%" fxFlex.lt-md="100%">
+      <div fxLayout="column" class="right_part1" fxFlex="100%">
+        <div fxLayout="row" fxLayoutAlign="space-between">
+          <div class="conditioner">Gentle conditioner</div>
+          <div class="circle_btn_3"><button mat-fab color="white"> +
+          </button></div>
+        </div>
+        <br>
+        <div fxLayout="row" fxLayoutAlign="space-between" class="right_part1_2">
+          <div class="choice" fxLayout="column" fxLayoutAlign="center start">
+            <div class="price2">$18.99</div>
+            <div class="Moisturize">Condition + Moisturize</div>
+            <mat-form-field appearance="outline">
+              <!-- <mat-label>150ml</mat-label> -->
+              <mat-select value="200" matNativeControl required>
+                <mat-option  value="150">150ml </mat-option>
+                <mat-option  value="200">200ml </mat-option>
+                <mat-option value="250">250ml </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="imgs">
+            <img src="../assets/images/conditioner.png" height="100%" alt="conditioner">
+          </div>
+        </div>
+        <mat-divider></mat-divider>
+        <br>
+        <div class="cart-2">
+          <button class="cart-btn" fxFlex="100%" fxLayoutAlign="center center" mat-button class="cart" >ADD TO CART</button></div>
+      </div>
+      <br><br>
+      <div class="right_part2" fxLayout="column" fxLayoutAlign="center center">
+        <div class="headline">YOU MAY ALSO LIKE</div>
+        <br>
+        <div class="arrow" fxLayoutAlign="center" fxLayout="row">
+          <img src="../assets/images/arrow.png" alt="arrow">
+        </div>
+        <div class="facewash" fxLayout="row" ngStyle.lt-md="padding:8% 8% 3% 8%;" fxLayoutAlign="center" fxLayoutGap="30px" >
+          <div class="face_wash_img" fxLayoutAlign="center" ><img src="../assets/images/facewash-2.png" alt="face wash">
+          </div>
+          <div class="face_wash_img" fxLayoutAlign="center"><img src="../assets/images/facewash-1.png" alt="face wash">
+          </div>
+        </div>
+      </div>
+      <br><br>
+      <img src="../assets/images/last_image.png" alt="other products">
+    </div>
+  </div>
+</div>

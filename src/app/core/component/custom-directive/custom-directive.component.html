@@ -1,0 +1,19 @@
+<div class="custom_directive_body"  >
+  
+  <div appFxalign="center center" >
+    <div class="cus_dir" appFxalign="{{horz}} {{vertical}}">
+      <div class="box"></div>
+    </div>
+  </div><br><br>
+    <div appFxalign="center center" >
+      <mat-form-field appearance="outline" class="fx_align">
+        <mat-label>Horizontal Position</mat-label>
+        <input matInput [(ngModel)]="horz">
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="fx_align">
+        <mat-label>Vertical Position</mat-label>
+        <input matInput [(ngModel)]="vertical">
+      </mat-form-field>
+    </div> 
+  </div>
+

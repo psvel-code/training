@@ -1,0 +1,34 @@
+th.mat-sort-header-sorted {
+  color: black;
+}
+.snack_btn {
+  margin-right: 12px;
+}
+//sanckbar
+::ng-deep.Error_snackbar{
+  background:red;
+}
+::ng-deep.Default_snackbar{
+  background:grey;
+}
+::ng-deep.Warning_snackbar{
+  background:hsl(60, 92%, 60%);
+  --mdc-snackbar-supporting-text-color: black;
+}
+::ng-deep.Success_snackbar{
+  background:green;
+}
+::ng-deep.Information_snackbar{
+  background:blue;
+}
+.snack{
+  background:blue;
+  color: white;
+}
+.header{
+  text-align: center;
+  font-weight: 900;
+}
+.mat-mdc-form-field {
+  --mdc-shape-small: 0px;
+}

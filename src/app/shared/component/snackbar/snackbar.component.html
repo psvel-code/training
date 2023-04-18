@@ -1,0 +1,18 @@
+<!-- <div class="header">
+<mat-icon>{{data.icon}}</mat-icon> {{data.header}}
+</div>
+<div class="message">
+  {{data.message}}
+</div>
+<div>
+
+</div>
+<div class="snack_btn" fxLayoutAlign="end end">
+  <button mat-button color="accent" matSnackBarAction (click)="snackBarRef.dismissWithAction()">{{data.action}}</button>
+</div> -->
+<div fxLayoutAlign="space-between start">
+  <mat-icon>{{data.icon}}</mat-icon>
+  <span>{{data.header}}</span>
+  {{data.message}}
+  <span fxLayoutAlign="start center" (click)="snackBarRef.dismissWithAction()"><mat-icon> close </mat-icon></span>
+</div>

@@ -1,0 +1,26 @@
+<div class="pipe_parent">
+  <h3>Date pipe</h3>
+  {{date| date:'mediumTime'}}
+  <br><br><br>
+  <h3>UpperCase pipe</h3>
+  {{name|uppercase}}
+  <br><br><br>
+  <h3>append pipe</h3>
+  <label for="Append">Search</label>
+  <input placeholder="Append" (input)="updateAppend($event)" id="search-term">
+  {{name|append:append}}
+  <br><br><br>
+  
+  <h3>Highlight cutom pipe</h3>
+  <label for="search-term">Search</label>
+  <input placeholder="Enter term" (input)="updateSearch($event)" id="search-term">
+  <div *ngFor="let result of results" [innerHTML]="result.summary | highlight: searchTerm"></div>
+
+  <br><br><br>
+  <h3> Filter pipe</h3>
+    <label for="search-term">Search</label>
+    <input placeholder="New name" [(ngModel)]="name" (input)="updateFilter($event)" id="search-term">
+    <button (click)="Add()">Add</button>
+    <div *ngFor= "let user of users | filter: 'gender':'M' " >{{user.name}} </div>
+  </div>
+

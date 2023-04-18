@@ -1,0 +1,16 @@
+.menu-spacer {
+  flex: 1 1 auto;
+}
+
+.nav{
+  padding-left: 50px;
+}
+.btn{
+  margin-right: 5px;
+}
+.btn:hover {
+  background-color: rgba(17, 5, 5, 0.668);
+}
+.active_link{
+  background-color: rgba(17, 5, 5, 0.668);
+}
