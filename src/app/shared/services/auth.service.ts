@@ -8,15 +8,14 @@ import { BehaviorSubject } from 'rxjs';
 export class AuthService {
   message = new BehaviorSubject<any>(null);
   constructor(private http: HttpRoutingService) { }
-  getmsg() {
-    console.log("authservice", this.http.getJson('message.json').subscribe(res => {
-      console.log("Response", res);
-      this.message.next(res);
-      console.log("msg", this.message);
-    })
-    );
+  // getmsg() {
+  //   console.log("authservice", this.http.getJson('message.json').subscribe(res => {
+  //     console.log("Response", res);
+  //     this.message.next(res);
+  //     console.log("msg", this.message);
+  //   })
+  //   );
 
-
-  }
 
 }
+

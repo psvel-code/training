@@ -14,6 +14,6 @@ export class AppComponent {
     private auth: AuthService
   ){}
   ngOnInit()  {
-    this.auth.getmsg();
+    // this.auth.getmsg();
   }
 }

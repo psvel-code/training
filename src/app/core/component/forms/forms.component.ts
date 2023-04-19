@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { EmployeeService } from 'src/app/shared/services/employee.service';
 
 @Component({
   selector: 'app-forms',
@@ -12,11 +13,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class FormsComponent {
   employee_detail!: FormGroup
   work = "App Developer";
-  designation = [
-    { id: 1, name: "Software developer" },
-    { id: 2, name: "Web developer" },
-    { id: 3, name: "Android developer" }
-  ];
+  designation: any;
   role = [
     { id: 1, name: "Super Admin" },
     { id: 2, name: "Admin" },
@@ -26,14 +23,22 @@ export class FormsComponent {
   mode: string = "normal";
   msg!: Observable<any>;
 
-  constructor(private auth: AuthService) { }
+  constructor(
+    private auth: AuthService,
+    private employee: EmployeeService
+  ) { }
   message: any
   ngOnInit(): void {
     this.msg = this.auth.message;
     this.auth.message.subscribe(res => {
       this.message = res;
       console.log("forms", this.message);
-    })
+    });
+    this.employee.getDesignation().subscribe((res: any) => {
+      console.log('forms designation', res.designation);
+
+      this.designation = res.designation;
+    });
     this.employee_detail = new FormGroup({
       firstName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       lastName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),

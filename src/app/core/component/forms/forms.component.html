@@ -22,8 +22,8 @@
             <mat-form-field appearance="outline" fxFlex="57%">
               <input matInput placeholder="" formControlName="admin">
               <mat-error *ngIf="employee_detail?.get('admin')?.hasError('required')">
-                <!-- This field is <strong>required</strong> -->
-                {{message.field_err}}
+                This field is <strong>required</strong>
+                <!-- {{message?.field_err}} -->
               </mat-error>
               <mat-error *ngIf="employee_detail?.get('admin')?.hasError('pattern')">
                 Not Valid
@@ -39,7 +39,8 @@
           <mat-form-field appearance="outline" fxFlex="60%">
             <input matInput placeholder="" formControlName="firstName">
             <mat-error *ngIf="employee_detail?.get('firstName')?.hasError('required')">
-              {{(msg|async).field_err}}
+              <!-- {{(msg|async)?.field_err}} -->
+              This field is <strong>required</strong>
             </mat-error>
             <mat-error *ngIf="employee_detail?.get('firstName')?.hasError('pattern')">
               Not Valid
