@@ -2,7 +2,7 @@
 
 // Define a model for role table
 module.exports = (sequelize, DataTypes) => {
-  var Model = sequelize.define('role', {
+  var Model = sequelize.define('designation', {
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -23,11 +23,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     }
   }, {
-    tableName: 'role'
+    tableName: 'designation'
   });
   // Adding a class level method.
   Model.associate = function (models) {
-    this.id = this.hasMany(models.employee);
+    this.id=this.hasMany(models.employee);
   };
   return Model;
 };
