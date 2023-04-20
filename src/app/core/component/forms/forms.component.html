@@ -37,7 +37,7 @@
         <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">First Name</mat-label>
           <mat-form-field appearance="outline" fxFlex="60%">
-            <input matInput placeholder="" formControlName="firstName">
+            <input matInput placeholder="" formControlName="firstname">
             <mat-error *ngIf="employee_detail?.get('firstName')?.hasError('required')">
               <!-- {{(msg|async)?.field_err}} -->
               This field is <strong>required</strong>
@@ -50,7 +50,7 @@
         <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
           <mat-label fxFlex="40%"> Last name</mat-label>
           <mat-form-field appearance="outline" fxFlex="60%">
-            <input matInput placeholder="" value="" formControlName="lastName">
+            <input matInput placeholder="" value="" formControlName="lastname">
             <mat-error *ngIf="employee_detail?.get('lastName')?.hasError('required')">
               This field is <strong>required</strong>
             </mat-error>
@@ -65,7 +65,7 @@
         <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Email</mat-label>
           <mat-form-field appearance="outline" fxFlex="60%">
-            <input matInput placeholder="" formControlName="Email">
+            <input matInput placeholder="" formControlName="email">
             <mat-error *ngIf="employee_detail?.get('Email')?.hasError('required')">
               Email is <strong>required</strong>
             </mat-error>
@@ -74,7 +74,7 @@
         <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
           <mat-label fxFlex="40%"> Alternate Email</mat-label>
           <mat-form-field appearance="outline" fxFlex="60%">
-            <input matInput placeholder="" value="" formControlName="AlterEmail">
+            <input matInput placeholder="" value="" formControlName="alternateEmail">
             <mat-error *ngIf="employee_detail?.get('AlterEmail')?.hasError('required')">
               Alternate Email is <strong>required</strong>
             </mat-error>
@@ -86,7 +86,7 @@
         <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Date Of Birth</mat-label>
           <mat-form-field appearance="outline" fxFlex="60%">
-            <input matInput [matDatepicker]="picker" formControlName="Dob">
+            <input matInput [matDatepicker]="picker" formControlName="created">
             <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
             <mat-error
@@ -101,7 +101,7 @@
         <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
           <mat-label fxFlex="40%">Date Of Joining</mat-label>
           <mat-form-field appearance="outline" fxFlex="60%">
-            <input matInput [matDatepicker]="datepicker" formControlName="Doj">
+            <input matInput [matDatepicker]="datepicker" formControlName="modified">
             <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
             <mat-datepicker #datepicker></mat-datepicker>
             <mat-error
@@ -119,7 +119,7 @@
         <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column">
           <mat-label fxFlex="40%">Designation</mat-label>
           <mat-form-field appearance="outline" fxFlex="60%">
-            <mat-select value="Software developer" formControlName="designation">
+            <mat-select value="Software developer" formControlName="designationId">
               <mat-option *ngFor="let item of designation" [value]="item.id">
                 {{item.name}}
               </mat-option>
@@ -132,7 +132,7 @@
         <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
           <mat-label fxFlex="40%"> Role</mat-label>
           <mat-form-field appearance="outline" fxFlex="60%">
-            <mat-select formControlName="role">
+            <mat-select formControlName="roleId">
               <mat-option *ngFor="let item of role" [value]="item.id">
                 {{item.name}}
               </mat-option>
@@ -161,7 +161,7 @@
                 <div fxlayout="row" fxFlex="50%" fxFlex.lt-md="100%" fxLayout.lt-md="column">
                   <mat-label fxFlex="40%">address</mat-label>
                   <mat-form-field appearance="outline" fxFlex="60%">
-                    <input matInput placeholder="" formControlName="address">
+                    <input matInput placeholder="" formControlName="address" value="address">
                     <mat-error *ngIf="getControls(employee_detail,i)?.address?.hasError('required')">
                       This field is <strong>required</strong>
                     </mat-error>
@@ -170,7 +170,7 @@
                 <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
                   <mat-label fxFlex="40%"> city</mat-label>
                   <mat-form-field appearance="outline" fxFlex="60%">
-                    <input matInput placeholder="" value="" formControlName="city">
+                    <input matInput placeholder="" value="city" formControlName="city">
                     <mat-error *ngIf="getControls(employee_detail,i)?.city?.hasError('required')">
                       This field is <strong>required</strong>
                     </mat-error>
@@ -181,7 +181,7 @@
                 <div fxlayout="row" fxFlex="50%" fxFlex.lt-md="100%" fxLayout.lt-md="column">
                   <mat-label fxFlex="40%">state</mat-label>
                   <mat-form-field appearance="outline" fxFlex="60%">
-                    <input matInput placeholder="" formControlName="state">
+                    <input matInput placeholder="" value="state" formControlName="state">
                     <mat-error *ngIf="getControls(employee_detail,i)?.state?.hasError('required')">
                       This field is <strong>required</strong>
                     </mat-error>
@@ -190,7 +190,7 @@
                 <div fxlayout="row" fxFlex="50%" fxLayout.lt-md="column" fxLayoutGap.lt-md="0">
                   <mat-label fxFlex="40%"> pincode</mat-label>
                   <mat-form-field appearance="outline" fxFlex="60%">
-                    <input matInput placeholder="" value="" formControlName="pincode">
+                    <input matInput placeholder="" value="pincode" formControlName="pincode">
                     <mat-error *ngIf="getControls(employee_detail,i)?.pincode?.hasError('required')">
                       This field is <strong>required</strong>
                     </mat-error>

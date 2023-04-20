@@ -1,6 +1,6 @@
 <h1 mat-dialog-title>{{data?.header}}</h1>
 <div *ngIf="data?.header !='Error'" mat-dialog-content>
-  <div [innerHTML]="data?.content"></div>
+  <div [innerHTML]="data?.content "></div>
 </div>
 <div mat-dialog-actions fxLayoutAlign="end end" fxLayoutGap="5px">
   <ng-container *ngIf="data?.actiontype === 'Confirmation'">

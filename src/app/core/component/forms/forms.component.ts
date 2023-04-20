@@ -42,31 +42,38 @@ export class FormsComponent {
     });
 
     this.employee_detail = new FormGroup({
-      firstName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
-      lastName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
-      Email: new FormControl(null),
-      AlterEmail: new FormControl(null),
-      Dob: new FormControl(null),
-      Doj: new FormControl(null),
-      designation: new FormControl(null),
-      role: new FormControl(null),
+      firstname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
+      lastname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
+      email: new FormControl(null),
+      alternateEmail: new FormControl(null),
+      created: new FormControl(null),
+      modified: new FormControl(null),
+      designationId: new FormControl(null),
+      roleId: new FormControl(null),
       contacts: new FormArray([]),
     });
     this.createArray();
     // console.log("forms", this.message);
   }
+  //submit
   onSubmit() {
-    console.log(this.employee_detail);
-  }
+    if (this.employee_detail.valid) {
+      console.log('success');
+      this.employee.createEmployee(this.employee_detail.value).subscribe((res: any) => {
+        console.log('createEmployee', res);
+      });
+    }
+  };
+
   getContacts() {
     return (this.employee_detail.get('contacts') as FormArray).controls;
-  }
+  };
   getControls(form: any, i: number) {
     return form.get('contacts').controls[i].controls;
-  }
+  };
   createArray() {
     (this.employee_detail?.get('contacts') as FormArray).push(new FormGroup({
-      address: new FormControl(null, Validators.required),
+      address: new FormControl(null),
       city: new FormControl(null),
       state: new FormControl(null),
       pincode: new FormControl(null),

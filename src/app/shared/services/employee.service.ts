@@ -13,9 +13,18 @@ export class EmployeeService {
   ) { }
 
   getDesignation() {
-    return this.gethttp.getMethod(this.appUrl + 'v1/');
+    return this.gethttp.getMethod(this.appUrl + 'v1/getDesignation');
   }
   getRole() {
-    return this.gethttp.getRole(this.appUrl + 'v1/');
+    return this.gethttp.getMethod(this.appUrl + 'v1/getRole');
+  }
+  createEmployee(data: any) {
+    return this.gethttp.createEmployee(this.appUrl + 'v1/createEmployee', data);
+  }
+  getEmployee() {
+    return this.gethttp.getMethod(this.appUrl + 'v1/getEmployees');
+  }
+  deleteEmployee(data: any) {
+    return this.gethttp.deleteEmployee(this.appUrl + 'v1/deleteEmployee', data);
   }
 }
