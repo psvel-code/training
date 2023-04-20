@@ -15,4 +15,7 @@ export class EmployeeService {
   getDesignation() {
     return this.gethttp.getMethod(this.appUrl + 'v1/');
   }
+  getRole() {
+    return this.gethttp.getRole(this.appUrl + 'v1/');
+  }
 }

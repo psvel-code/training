@@ -14,11 +14,7 @@ export class FormsComponent {
   employee_detail!: FormGroup
   work = "App Developer";
   designation: any;
-  role = [
-    { id: 1, name: "Super Admin" },
-    { id: 2, name: "Admin" },
-    { id: 3, name: "Employee" }
-  ];
+  role: any;
   user = "employee";
   mode: string = "normal";
   msg!: Observable<any>;
@@ -32,13 +28,19 @@ export class FormsComponent {
     this.msg = this.auth.message;
     this.auth.message.subscribe(res => {
       this.message = res;
-      console.log("forms", this.message);
+      // console.log("forms", this.message);
     });
+
     this.employee.getDesignation().subscribe((res: any) => {
       console.log('forms designation', res.designation);
-
       this.designation = res.designation;
     });
+
+    this.employee.getRole().subscribe((res: any) => {
+      console.log('forms Role', res.role);
+      this.role = res.role;
+    });
+
     this.employee_detail = new FormGroup({
       firstName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       lastName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
@@ -51,8 +53,7 @@ export class FormsComponent {
       contacts: new FormArray([]),
     });
     this.createArray();
-    console.log("forms", this.message);
-
+    // console.log("forms", this.message);
   }
   onSubmit() {
     console.log(this.employee_detail);

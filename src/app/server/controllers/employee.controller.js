@@ -1,6 +1,6 @@
-const Designation = require('../models/designation').designation
-const Role = require('../models/role').role
-const Employee = require('../models').employee
+const Designation = require('../models').designation;
+const Role = require('../models').role;
+const Employee = require('../models').employee;
 
 
 const getEmployees = async function (req, res) {
@@ -23,9 +23,16 @@ module.exports.createEmployee = createEmployee;
 
 const getDesignation = async function (req, res) {
   let err;
-  [err, response] = await to(designation.findAll());
-  console.log('gets: ', body);
+  [err, designation] = await to(Designation.findAll());
   if (err) return ReE(res, err, 422);
-  return ReS(res, { body });
+  return ReS(res, { designation });
 }
 module.exports.getDesignation = getDesignation;
+
+const getRole = async function (req, res) {
+  let err;
+  [err, role] = await to(Role.findAll());
+  if (err) return ReE(res, err, 422);
+  return ReS(res, { role });
+}
+module.exports.getRole = getRole;

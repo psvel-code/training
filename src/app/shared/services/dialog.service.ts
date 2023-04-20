@@ -7,10 +7,11 @@ import { DialogComponent } from '../component/dialog/dialog.component';
 export class DialogService {
   constructor(public dialog: MatDialog) { }
   openConfirmationDialog(message: any, classname?: string) {
+
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
         header: 'Confirmation',
-        content: message.delete,
+        content: 'Are you want to delete ?',
         actiontype: 'Confirmation',
       },
       width: "400px",

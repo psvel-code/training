@@ -14,4 +14,7 @@ export class HttpRoutingService {
   getMethod(url: any) {
     return this.http.get(url + 'getDesignation');
   }
+  getRole(url: any) {
+    return this.http.get(url + 'getRole');
+  }
 }
