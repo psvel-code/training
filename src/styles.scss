@@ -128,3 +128,36 @@ body {
 .login_parent .mat-mdc-form-field-focus-overlay {
   background-color: white !important;
 }
+
+//snackbar
+
+::ng-deep.Error_snackbar {
+  background: red;
+}
+
+::ng-deep.Default_snackbar {
+  background: grey;
+}
+
+::ng-deep.Warning_snackbar {
+  background: hsl(60, 92%, 60%);
+  --mdc-snackbar-supporting-text-color: black;
+}
+
+::ng-deep.Success_snackbar {
+  background: green;
+}
+
+::ng-deep.Information_snackbar {
+  background: blue;
+}
+
+.table_undo {
+  background: blue;
+}
+
+
+.snack {
+  background: blue;
+  color: white;
+}

@@ -202,7 +202,7 @@
         </div>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center">
-        <button mat-raised-button color="primary" (click)="onSubmit()">submit</button>
+        <button mat-raised-button color="primary" (click)="onSubmit()">{{ update ? "update" : "submit"}}</button>
       </div>
       <div fxLayout="row" fxLayoutAlign="end end">
         <a color="primary" routerLink="/app/password" mat-stroked-button>Change Password</a>

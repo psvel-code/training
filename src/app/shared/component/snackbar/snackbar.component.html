@@ -11,8 +11,9 @@
   <button mat-button color="accent" matSnackBarAction (click)="snackBarRef.dismissWithAction()">{{data.action}}</button>
 </div> -->
 <div fxLayoutAlign="space-between start">
-  <mat-icon>{{data.icon}}</mat-icon>
-  <span>{{data.header}}</span>
+  <mat-icon mat-dialog-close="true">{{data.icon}}</mat-icon>
+  <!-- <span>{{data.header}}</span> -->
   {{data.message}}
-  <span fxLayoutAlign="start center" (click)="snackBarRef.dismissWithAction()"><mat-icon> close </mat-icon></span>
+  <span fxLayoutAlign="start center" (click)="snackBarRef.dismissWithAction()"><mat-icon> close
+    </mat-icon></span>
 </div>

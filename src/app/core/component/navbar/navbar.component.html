@@ -14,13 +14,14 @@
         <a class="btn" routerLink="/app/pipes" routerLinkActive="active_link" mat-button> pipes </a>
         <a class="btn" routerLink="/app/observables" routerLinkActive="active_link" mat-button> Observables </a>
         <a class="btn" routerLink="/app/loading" routerLinkActive="active_link" mat-button> Loading </a>
-        <a class="btn" routerLink="/login" (click)="this.auth.logout()" routerLinkActive="active_link" mat-button> <mat-icon>logout</mat-icon>
+        <a class="btn" routerLink="/login" (click)="this.auth.logout()" routerLinkActive="active_link" mat-button>
+          <mat-icon>logout</mat-icon>
         </a>
       </div>
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container fxFlexFill>
-    <mat-sidenav #sidenav mode="side" [fxHide.lt-md]="side_n">
+    <mat-sidenav #sidenav mode="side" fxHide.gt-md>
       <mat-nav-list>
         <a routerLink="/app/home" mat-list-item> Home</a>
         <a routerLink="/app/table" mat-list-item> Table </a>

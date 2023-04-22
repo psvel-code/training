@@ -8,5 +8,7 @@ router.post('/createEmployee', EmployeeController.createEmployee);
 router.get('/getDesignation', EmployeeController.getDesignation);
 router.get('/getRole', EmployeeController.getRole);
 router.post('/deleteEmployee', EmployeeController.deleteEmployee);
+router.post('/updateEmployee', EmployeeController.updateEmployee);
+router.post('/getOneEmployee', EmployeeController.getOneEmployee);
 
 module.exports = router;

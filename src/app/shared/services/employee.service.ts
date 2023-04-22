@@ -9,22 +9,28 @@ export class EmployeeService {
   appUrl = environment.app_url;
 
   constructor(
-    private gethttp: HttpRoutingService,
+    private http: HttpRoutingService,
   ) { }
 
   getDesignation() {
-    return this.gethttp.getMethod(this.appUrl + 'v1/getDesignation');
+    return this.http.getMethod('v1/getDesignation');
   }
   getRole() {
-    return this.gethttp.getMethod(this.appUrl + 'v1/getRole');
+    return this.http.getMethod('v1/getRole');
   }
   createEmployee(data: any) {
-    return this.gethttp.createEmployee(this.appUrl + 'v1/createEmployee', data);
+    return this.http.postMethod('v1/createEmployee', data);
+  }
+  updateEmployee(data: any) {
+    return this.http.postMethod('v1/updateEmployee', data);
   }
   getEmployee() {
-    return this.gethttp.getMethod(this.appUrl + 'v1/getEmployees');
+    return this.http.getMethod('v1/getEmployees');
   }
   deleteEmployee(data: any) {
-    return this.gethttp.deleteEmployee(this.appUrl + 'v1/deleteEmployee', data);
+    return this.http.postMethod('v1/deleteEmployee', data);
+  }
+  getOneEmployee(data: any) {
+    return this.http.postMethod('v1/getOneEmployee', data);
   }
 }

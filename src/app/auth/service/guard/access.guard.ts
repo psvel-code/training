@@ -13,6 +13,8 @@ export class AccessGuard {
     { id: 4, url: '/app/forms' },
     { id: 5, url: '/app/table' },
     { id: 6, url: '/app/home' },
+    { path: 'forms/:mode/:id' },
+
   ]
   canActivateChild(
     route: ActivatedRouteSnapshot,

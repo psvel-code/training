@@ -1,4 +1,4 @@
-const employee = require('../models/employee');
+// const employee = require('../models/employee');
 
 const Designation = require('../models').designation;
 const Role = require('../models').role;
@@ -23,11 +23,11 @@ module.exports.getEmployees = getEmployees;
 const createEmployee = async function (req, res) {
   let err;
   let body = req.body;
-  console.log('body', body)
-  [err, employee] = await to(Employee.create(body));
-  console.log('createEmployee: ', employee);
+  console.log('body', body);
+  [err, response] = await to(Employee.create(body));
+  console.log('createEmployee: ', response);
   if (err) return ReE(res, err, 422);
-  return ReS(res, { body });
+  return ReS(res, { response });
 }
 module.exports.createEmployee = createEmployee;
 
@@ -49,15 +49,36 @@ module.exports.getRole = getRole;
 
 const deleteEmployee = async function (req, res) {
   let err;
-  let body = req.body;
-  console.log('body', body)
-  [err, employee] = await to(Employee.destroy({
-    where: {
-      id: body.id
-    }
+  let body = req.body
+  console.log('body', body);
+  [err, response] = await to(Employee.destroy({
+    where: { id: body.id }
   }));
-  console.log('deleteEmployee: ', employee);
   if (err) return ReE(res, err, 422);
-  return ReS(res, { body });
+  return ReS(res, { response });
 }
-module.exports.deleteEmployee = deleteEmployee;
+module.exports.deleteEmployee = deleteEmployee
+
+const updateEmployee = async function (req, res) {
+  let err;
+  let body = req.body
+  console.log('body', body);
+  [err, response] = await to(Employee.update(body, {
+    where: { id: body.id }
+  }));
+  if (err) return ReE(res, err, 422);
+  return ReS(res, { response });
+}
+module.exports.updateEmployee = updateEmployee
+
+const getOneEmployee = async function (req, res) {
+  let err;
+  console.log('getOneEmployees: ');
+  [err, response] = await to(Employee.findOne({
+    where: { id: req.body.id }
+  }));
+
+  if (err) return ReE(res, err, 422);
+  return ReS(res, { response });
+}
+module.exports.getOneEmployee = getOneEmployee;

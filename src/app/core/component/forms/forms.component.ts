@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-forms',
@@ -18,13 +20,33 @@ export class FormsComponent {
   user = "employee";
   mode: string = "normal";
   msg!: Observable<any>;
+  id: any;
+  update = false;
 
   constructor(
     private auth: AuthService,
-    private employee: EmployeeService
+    private employee: EmployeeService,
+    private activate: ActivatedRoute,
+    private snackbar_service: SnackbarService,
+    private route: Router
   ) { }
   message: any
   ngOnInit(): void {
+
+    this.activate.params.subscribe((res: any) => {
+      this.id = res['id'];
+      this.mode = res['mode'];
+    });
+    if (this.mode == 'edit') {
+      this.employee.getOneEmployee({
+        id:
+          this.id
+      }).subscribe((res: any) => {
+        console.log("getone employee", res);
+        this.employee_detail.patchValue(res.response);
+        this.update = true;
+      })
+    }
     this.msg = this.auth.message;
     this.auth.message.subscribe(res => {
       this.message = res;
@@ -55,13 +77,26 @@ export class FormsComponent {
     this.createArray();
     // console.log("forms", this.message);
   }
+
   //submit
   onSubmit() {
     if (this.employee_detail.valid) {
-      console.log('success');
-      this.employee.createEmployee(this.employee_detail.value).subscribe((res: any) => {
-        console.log('createEmployee', res);
-      });
+
+      // console.log('form data', this.employee_detail.value);
+      if (this.update) {
+        this.employee_detail.value.id = this.id;
+        this.employee.updateEmployee(this.employee_detail.value).subscribe((res: any) => {
+          this.snackbar_service.openSnackBar("Success_snackbar", "data updated succesfully");
+          console.log('createEmployee', res);
+        });
+      }
+      else {
+        this.employee.createEmployee(this.employee_detail.value).subscribe((res: any) => {
+          this.snackbar_service.openSnackBar("Success_snackbar", "data submitted succesfully");
+          console.log('createEmployee', res);
+        });
+      }
+
     }
   };
 

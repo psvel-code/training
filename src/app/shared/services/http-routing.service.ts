@@ -12,14 +12,10 @@ export class HttpRoutingService {
   //   return this.http.get('./assets/' + url);
   // }
   getMethod(url: any) {
-    return this.http.get(url);
+    return this.http.get(this.appUrl + url);
   };
-  createEmployee(url: any, data: any) {
-    return this.http.post(url, data);
-  };
-  deleteEmployee(url: any, data: any) {
-    console.log("delete working", data);
-    return this.http.post(url, data);
+  postMethod(url: any, data: any) {
+    return this.http.post(this.appUrl + url, data);
   };
 
 }

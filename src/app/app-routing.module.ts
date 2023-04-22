@@ -29,7 +29,8 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
   {
-    path: 'app', component: NavbarComponent, canActivate: [AuthGuard], canActivateChild: [AccessGuard], children: [
+    // canActivateChild: [AccessGuard]
+    path: 'app', component: NavbarComponent, canActivate: [AuthGuard], children: [
       { path: 'home', component: HomeComponent },
       { path: 'table', component: TableComponent },
       { path: 'data', component: Table2Component },
@@ -40,6 +41,7 @@ const routes: Routes = [
       { path: 'task1', component: SignupComponent },
       { path: 'task2', component: Task2Component },
       { path: 'forms', component: FormsComponent, },
+      { path: 'forms/:mode/:id', component: FormsComponent },
       { path: 'pipes', component: PipesComponent },
       { path: 'observables', component: ObservableComponent },
       { path: 'cusdir', component: CustomDirectiveComponent },
