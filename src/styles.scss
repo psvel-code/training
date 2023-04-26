@@ -114,8 +114,6 @@ body {
 }
 
 //LOGIN 
-
-
 .login_parent .mdc-text-field {
   background-color: white !important;
   padding: 0 !important;
@@ -129,33 +127,33 @@ body {
   background-color: white !important;
 }
 
+
 //snackbar
 
-::ng-deep.Error_snackbar {
+.Error_snackbar {
   background: red;
 }
 
-::ng-deep.Default_snackbar {
+.Default_snackbar {
   background: grey;
 }
 
-::ng-deep.Warning_snackbar {
+.Warning_snackbar {
   background: hsl(60, 92%, 60%);
   --mdc-snackbar-supporting-text-color: black;
 }
 
-::ng-deep.Success_snackbar {
+.Success_snackbar {
   background: green;
 }
 
-::ng-deep.Information_snackbar {
+.Information_snackbar {
   background: blue;
 }
 
 .table_undo {
   background: blue;
 }
-
 
 .snack {
   background: blue;
