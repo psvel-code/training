@@ -28,13 +28,14 @@ export class SnackbarService {
         message: message,
         // action: action,
         header: mydata?.name,
-        icon: mydata?.icon
+        icon: mydata?.icon,
+        name: mydata?.name
       },
       duration: 5000,
-      horizontalPosition: 'right',
+      horizontalPosition: 'center',
       verticalPosition: 'top',
       panelClass: classname
     });
-
+    return snackBarRef;
   }
 }

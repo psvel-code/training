@@ -7,13 +7,8 @@ import { defaultUrlMatcher } from '@angular/router';
 })
 export class DialogService {
   constructor(public dialog: MatDialog) { }
-  ngOnInit(): void {
-    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-    //Add 'implements OnInit' to the class.
 
-  }
   openConfirmationDialog(name: any, classname?: string) {
-
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
         header: 'Confirmation',

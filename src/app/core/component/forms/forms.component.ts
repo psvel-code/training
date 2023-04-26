@@ -32,7 +32,8 @@ export class FormsComponent {
   ) { }
   message: any
   ngOnInit(): void {
-
+    this.formInit();
+    this.createArray();
     this.activate.params.subscribe((res: any) => {
       this.id = res['id'];
       this.mode = res['mode'];
@@ -63,6 +64,10 @@ export class FormsComponent {
       this.role = res.role;
     });
 
+
+  }
+
+  formInit() {
     this.employee_detail = new FormGroup({
       firstname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       lastname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
@@ -82,18 +87,18 @@ export class FormsComponent {
   onSubmit() {
     if (this.employee_detail.valid) {
 
-      // console.log('form data', this.employee_detail.value);
+      console.log('form data', this.employee_detail.value);
       if (this.update) {
         this.employee_detail.value.id = this.id;
         this.employee.updateEmployee(this.employee_detail.value).subscribe((res: any) => {
           this.snackbar_service.openSnackBar("Success_snackbar", "data updated succesfully");
-          console.log('createEmployee', res);
+          // console.log('createEmployee', res);
         });
       }
       else {
         this.employee.createEmployee(this.employee_detail.value).subscribe((res: any) => {
           this.snackbar_service.openSnackBar("Success_snackbar", "data submitted succesfully");
-          console.log('createEmployee', res);
+          // console.log('createEmployee', res);
         });
       }
 

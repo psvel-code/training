@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
   {
     // canActivateChild: [AccessGuard]
-    path: 'app', component: NavbarComponent, canActivate: [AuthGuard], children: [
+    path: 'app', component: NavbarComponent, canActivate: [AuthGuard], canActivateChild: [AccessGuard],children: [
       { path: 'home', component: HomeComponent },
       { path: 'table', component: TableComponent },
       { path: 'data', component: Table2Component },

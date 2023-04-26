@@ -8,10 +8,6 @@ import { AuthService } from 'src/app/auth/service/auth.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent {
-  constructor(private route: Router, public auth:AuthService) { }
-  side_n = false;
-  toggle() {
-    this.side_n = !this.side_n;
-  }
- 
+  constructor(private route: Router, public auth: AuthService) { }
+
 }

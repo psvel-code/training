@@ -40,31 +40,27 @@ export class TableComponent {
     private snackbar_service: SnackbarService,
     private auth: AuthService,
     private employee: EmployeeService,
-
-
   ) { }
 
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild('edit', { static: false }) delete!: TemplateRef<any>; // dialog 
+  @Input() intervention: any;
 
   ELEMENT_DATA!: any[];
-  @Input() intervention: any;
   durationInSeconds = 3;
   displayedColumns: string[] = ['id', 'name', 'mail', 'DesignationId', 'RoleId', 'Action'];
   dataSource = new MatTableDataSource<PeriodicElement>(this.ELEMENT_DATA);
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-  // dialog 
-  @ViewChild('edit', { static: false }) delete!: TemplateRef<any>;
-  //child tooltip variable
-  title = 'Employee';
+  title = 'Employee';  //child tooltip variable
   message = "hello";
   action = "action";
   classname = "Default";
   id !: number;
   mode!: string;
   color_snack: string[] = ['Default', 'Success', 'Information', 'Error', 'Warning'];
-
   description = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis laudantium, ullam fugiat necessitatibus corporis, consequatur praesentium veritatis dignissimos accusamus odio delectus vel aut iste numquam iusto fuga ipsam laborum aperiam?";
-  actionArray = [{ label: "ActiveEmp", value: "Active" }, { label: "InActiveEmp", value: "InActive" }];
+  // actionArray = [{ label: "ActiveEmp", value: "Active" }, { label: "InActiveEmp", value: "InActive" }];
+
   ngOnInit() {
     this.employee.getEmployee().subscribe((res: any) => {
       // console.log('employee table', res.response);
@@ -76,9 +72,6 @@ export class TableComponent {
       this.message = res;
       console.log("forms", this.message);
     });
-
-
-
   }
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -93,32 +86,23 @@ export class TableComponent {
       if (response) {
         this.employee.deleteEmployee({ id: element.id }).subscribe((res: any) => {
           const index = this.ELEMENT_DATA.findIndex(x => x.id === element.id)
-          // console.log('index', index);
-          // console.log('res.delemp', res);
           if (res.response) {
             this.ELEMENT_DATA.splice(index, 1);
             this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
             this.dataSource.paginator = this.paginator;
           }
-          const snackbar = this._snackBar.open("Data deleted", "undo", {
-            panelClass: 'Information_snackbar'
-          });
-          snackbar.afterDismissed().subscribe(() => {
+          const snackbar = this.snackbar_service.openSnackBar("table_undo", "Data deleted").afterDismissed().subscribe(() => {
             let undo = element;
             this.employee.createEmployee(undo).subscribe((res: any) => {
-              this._snackBar.open("Data Restore succesfully", 'X', {
-                panelClass: "Success_snackbar"
-              });
+              this.snackbar_service.openSnackBar("Success_snackbar", "Data undo sucessfully")
               this.ELEMENT_DATA.splice(index, 0, undo);
               this.dataSource = new MatTableDataSource(this.ELEMENT_DATA);
               this.dataSource.paginator = this.paginator;
               console.log('undo', res);
             });
-
           })
         });
       }
-
       // const dialogref = this.openDialog.open(this.delete, {
       //   autoFocus: false,
       //   width: '400px'

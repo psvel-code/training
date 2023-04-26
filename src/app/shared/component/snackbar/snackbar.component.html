@@ -11,9 +11,11 @@
   <button mat-button color="accent" matSnackBarAction (click)="snackBarRef.dismissWithAction()">{{data.action}}</button>
 </div> -->
 <div fxLayoutAlign="space-between start">
-  <mat-icon mat-dialog-close="true">{{data.icon}}</mat-icon>
+  <mat-icon mat-dialog-close="true" (click)="snackBarRef.dismissWithAction()">{{data.icon}}</mat-icon>
   <!-- <span>{{data.header}}</span> -->
   {{data.message}}
-  <span fxLayoutAlign="start center" (click)="snackBarRef.dismissWithAction()"><mat-icon> close
-    </mat-icon></span>
+  <span *ngIf=" data.name =='table_undo' " fxLayoutAlign="start center" (click)="snackBarRef.dismiss()">Undo</span>
+  <span *ngIf=" data.name !='table_undo' " fxLayoutAlign="start center"
+    (click)="snackBarRef.dismiss()"><mat-icon>close</mat-icon></span>
+
 </div>

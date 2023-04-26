@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class EmployeeService {
-  appUrl = environment.app_url;
+
 
   constructor(
     private http: HttpRoutingService,

@@ -98,10 +98,6 @@ body {
   padding-bottom: 5px;
 }
 
-// snackbar
-.mdc-snackbar__surface {
-  background-color: transparent !important;
-}
 
 html,
 body {
@@ -129,6 +125,10 @@ body {
 
 
 //snackbar
+// snackbar
+.mdc-snackbar__surface {
+  background-color: transparent !important;
+}
 
 .Error_snackbar {
   background: red;

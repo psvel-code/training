@@ -1,6 +1,6 @@
 <div style="margin: 40px;">
-  <app-tooltip [title]="title" [description]="description" [actionArray]="actionArray" (actionEmit)="onEmit($event)">
-  </app-tooltip>
+  <!-- <app-tooltip [title]="title" [description]="description" [actionArray]="actionArray" (actionEmit)="onEmit($event)">
+  </app-tooltip> -->
   <mat-form-field>
     <mat-label>Filter</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="Ex. name" #input>
@@ -53,6 +53,7 @@
   </mat-paginator>
 </div>
 
+<!-- dialog ref -->
 <ng-template #edit>
   <h2 mat-dialog-title> Edit</h2>
   <mat-dialog-content class="mat-typography">
