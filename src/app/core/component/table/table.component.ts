@@ -138,7 +138,6 @@ export class TableComponent {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   onEmit(event: any) {
-    console.log('onemit :', event);
     const filterValue = this.ELEMENT_DATA.filter(item => item.status === event.value);
     this.dataSource = new MatTableDataSource<any>(filterValue);
     this.dataSource.paginator = this.paginator;

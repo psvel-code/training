@@ -33,4 +33,8 @@ export class EmployeeService {
   getOneEmployee(data: any) {
     return this.http.postMethod('v1/getOneEmployee', data);
   }
+  checkEmail(email: string, id: number | undefined) {
+    const data = { email: email, id: id ? id : null };
+    return this.http.postMethod('v1/checkEmail', data);
+  }
 }

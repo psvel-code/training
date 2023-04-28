@@ -10,5 +10,5 @@ router.get('/getRole', EmployeeController.getRole);
 router.post('/deleteEmployee', EmployeeController.deleteEmployee);
 router.post('/updateEmployee', EmployeeController.updateEmployee);
 router.post('/getOneEmployee', EmployeeController.getOneEmployee);
-
+router.post('/checkEmail', EmployeeController.checkEmail);
 module.exports = router;

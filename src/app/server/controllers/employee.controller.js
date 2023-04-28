@@ -73,12 +73,25 @@ module.exports.updateEmployee = updateEmployee
 
 const getOneEmployee = async function (req, res) {
   let err;
-  console.log('getOneEmployees: ');
   [err, response] = await to(Employee.findOne({
     where: { id: req.body.id }
   }));
-
   if (err) return ReE(res, err, 422);
   return ReS(res, { response });
 }
 module.exports.getOneEmployee = getOneEmployee;
+
+const checkEmail = async function (req, res) {
+  let body = req.body;
+  let err, email;
+  [err, email] = await to(Employee.findOne({
+    where: { email: body.email }
+  }));
+
+  if (err) ReE(res, err, 422);
+  if (body.id && email && email.id === body.id) {
+    email = null;
+  }
+  return ReS(res, { emailExist: email ? true : false })
+}
+module.exports.checkEmail = checkEmail;

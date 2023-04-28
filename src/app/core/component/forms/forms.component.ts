@@ -3,6 +3,7 @@ import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AsyncValidationService } from 'src/app/shared/services/async-validation.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { EmployeeService } from 'src/app/shared/services/employee.service';
 import { SnackbarService } from 'src/app/shared/services/snackbar.service';
@@ -22,6 +23,7 @@ export class FormsComponent {
   msg!: Observable<any>;
   id: any;
   update = false;
+  detail: any;
 
   constructor(
     private auth: AuthService,
@@ -44,9 +46,10 @@ export class FormsComponent {
           this.id
       }).subscribe((res: any) => {
         console.log("getone employee", res);
+        this.detail = res.response;    //for email validation
         this.employee_detail.patchValue(res.response);
         this.update = true;
-      })
+      });
     }
     this.msg = this.auth.message;
     this.auth.message.subscribe(res => {
@@ -63,15 +66,15 @@ export class FormsComponent {
       console.log('forms Role', res.role);
       this.role = res.role;
     });
-
-
   }
 
   formInit() {
     this.employee_detail = new FormGroup({
       firstname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       lastname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
-      email: new FormControl(null),
+      email: new FormControl(null, [Validators.required], 
+        this.detail ?
+        AsyncValidationService.asyncEmailValidation(this.employee, this.detail.id) : AsyncValidationService.asyncEmailValidation(this.employee)),
       alternateEmail: new FormControl(null),
       created: new FormControl(null),
       modified: new FormControl(null),
