@@ -33,6 +33,7 @@ export class FormsComponent {
     private route: Router
   ) { }
   message: any
+
   ngOnInit(): void {
     this.formInit();
     this.createArray();
@@ -51,10 +52,12 @@ export class FormsComponent {
         this.update = true;
       });
     }
-    this.msg = this.auth.message;
+
+    // this.msg = this.auth.message;
+    // console.log("this.msg", this.msg);
+
     this.auth.message.subscribe(res => {
       this.message = res;
-      // console.log("forms", this.message);
     });
 
     this.employee.getDesignation().subscribe((res: any) => {
@@ -72,9 +75,9 @@ export class FormsComponent {
     this.employee_detail = new FormGroup({
       firstname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       lastname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
-      email: new FormControl(null, [Validators.required], 
+      email: new FormControl(null, [Validators.required],
         this.detail ?
-        AsyncValidationService.asyncEmailValidation(this.employee, this.detail.id) : AsyncValidationService.asyncEmailValidation(this.employee)),
+          AsyncValidationService.asyncEmailValidation(this.employee, this.detail.id) : AsyncValidationService.asyncEmailValidation(this.employee)),
       alternateEmail: new FormControl(null),
       created: new FormControl(null),
       modified: new FormControl(null),
@@ -86,7 +89,7 @@ export class FormsComponent {
     // console.log("forms", this.message);
   }
 
-  //submit
+  //submit================================================================
   onSubmit() {
     if (this.employee_detail.valid) {
 
@@ -148,5 +151,8 @@ export class FormsComponent {
     else {
       this.employee_detail.enable();
     }
+  }
+  canDeactivate() {
+    return this.employee_detail ? this.employee_detail.pristine : true
   }
 }

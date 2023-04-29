@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
   {
     // canActivateChild: [AccessGuard]
-    path: 'app', component: NavbarComponent, canActivate: [AuthGuard], canActivateChild: [AccessGuard],children: [
+    path: 'app', component: NavbarComponent, canActivate: [AuthGuard], canActivateChild: [AccessGuard], children: [
       { path: 'home', component: HomeComponent },
       { path: 'table', component: TableComponent },
       { path: 'data', component: Table2Component },
@@ -40,8 +40,8 @@ const routes: Routes = [
       { path: 'counter', component: CounterComponent },
       { path: 'task1', component: SignupComponent },
       { path: 'task2', component: Task2Component },
-      { path: 'forms', component: FormsComponent, },
-      { path: 'forms/:mode/:id', component: FormsComponent },
+      { path: 'forms', component: FormsComponent, canDeactivate: [CanDeactiveGuardGuard] },
+      { path: 'forms/:mode/:id', component: FormsComponent, canDeactivate: [CanDeactiveGuardGuard] },
       { path: 'pipes', component: PipesComponent },
       { path: 'observables', component: ObservableComponent },
       { path: 'cusdir', component: CustomDirectiveComponent },

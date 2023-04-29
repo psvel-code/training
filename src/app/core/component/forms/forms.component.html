@@ -23,7 +23,7 @@
               <input matInput placeholder="" formControlName="admin">
               <mat-error *ngIf="employee_detail?.get('admin')?.hasError('required')">
                 This field is <strong>required</strong>
-                <!-- {{message?.field_err}} -->
+                {{message?.requird_err}}
               </mat-error>
               <mat-error *ngIf="employee_detail?.get('admin')?.hasError('pattern')">
                 Not Valid

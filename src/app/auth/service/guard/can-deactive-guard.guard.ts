@@ -22,7 +22,9 @@ export class CanDeactiveGuardGuard {
     currentRoute: ActivatedRouteSnapshot,
     currentState: RouterStateSnapshot,
     nextState?: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if (!component.canDeactivate) {
+    if (component.canDeactivate) {
+      console.log("canDeactivate");
+
       return new Observable((observer: Observer<boolean>) => {
         const dialogref = this.dialog.openConfirmationDialog("Are you want to close this page ?");
         dialogref.afterClosed().pipe(filter((result: boolean) => {
@@ -32,9 +34,10 @@ export class CanDeactiveGuardGuard {
           observer.complete();
         });
       });
-
     }
     else {
+      console.log(" else  canDeactivate");
+
       return true;
     }
 

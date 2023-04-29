@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { EmployeeService } from 'src/app/shared/services/employee.service';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-    
+  constructor(private employee: EmployeeService) { }
+  ngOnInit() {
+    console.log("home");
 
+    setTimeout(() => {
+      this.employee.getDesignation().subscribe((res) => {
+        console.log("home", res);
+      });
+    })
+
+  }
 }
