@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FxalignDirective } from '../directive_folder/fxalign/fxalign.directive';
+// import { FxalignDirective } from '../directive_folder/fxalign/fxalign.directive';
 
 @Component({
   selector: 'app-custom-directive',

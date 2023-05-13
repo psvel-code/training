@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AsyncValidationService } from 'src/app/shared/services/async-validation.service';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { EmployeeService } from 'src/app/shared/services/employee.service';
-import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 
 @Component({
   selector: 'app-forms',
@@ -16,63 +12,30 @@ import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 export class FormsComponent {
   employee_detail!: FormGroup
   work = "App Developer";
-  designation: any;
-  role: any;
+  designation = [
+    { id: 1, name: "Software developer" },
+    { id: 2, name: "Web developer" },
+    { id: 3, name: "Android developer" }
+  ];
+  role = [
+    { id: 1, name: "Super Admin" },
+    { id: 2, name: "Admin" },
+    { id: 3, name: "Employee" }
+  ];
   user = "employee";
   mode: string = "normal";
   msg!: Observable<any>;
-  id: any;
-  update = false;
-  detail: any;
 
-  constructor(
-    private auth: AuthService,
-    private employee: EmployeeService,
-    private activate: ActivatedRoute,
-    private snackbar_service: SnackbarService,
-    private route: Router
-  ) { }
+  constructor(private auth: AuthService) { }
   message: any
-
   ngOnInit(): void {
-    this.formInit();
-    this.createArray();
-    this.activate.params.subscribe((res: any) => {
-      this.id = res['id'];
-      this.mode = res['mode'];
-    });
-    if (this.mode == 'edit') {
-      this.employee.getOneEmployee({
-        id:
-          this.id
-      }).subscribe((res: any) => {
-        console.log("getone employee", res);
-        this.detail = res.response;    //for email validation
-        this.employee_detail.patchValue(res.response);
-        this.update = true;
-      });
-    }
-
-    // this.msg = this.auth.message;
-    // console.log("this.msg", this.msg);
-
+    this.msg = this.auth.message;
     this.auth.message.subscribe(res => {
       this.message = res;
-    });
-
-    this.employee.getDesignation().subscribe((res: any) => {
-      console.log('forms designation', res.designation);
-      this.designation = res.designation;
-    });
-
-    this.employee.getRole().subscribe((res: any) => {
-      console.log('forms Role', res.role);
-      this.role = res.role;
-    });
-  }
-
-  formInit() {
+      console.log("forms", this.message);
+    })
     this.employee_detail = new FormGroup({
+<<<<<<< HEAD
       firstname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       lastname: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
       email: new FormControl(null, [Validators.required],
@@ -83,43 +46,34 @@ export class FormsComponent {
       modified: new FormControl(null),
       designationId: new FormControl(null),
       roleId: new FormControl(null), 
+=======
+      firstName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
+      lastName: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+$')]),
+      Email: new FormControl(null),
+      AlterEmail: new FormControl(null),
+      Dob: new FormControl(null),
+      Doj: new FormControl(null),
+      designation: new FormControl(null),
+      role: new FormControl(null),
+>>>>>>> 2474530e9a5f6849a8f8de76b511085ff0becf5d
       contacts: new FormArray([]),
     });
     this.createArray();
-    // console.log("forms", this.message);
+    console.log("forms", this.message);
+
   }
-
-  //submit================================================================
   onSubmit() {
-    if (this.employee_detail.valid) {
-
-      console.log('form data', this.employee_detail.value);
-      if (this.update) {
-        this.employee_detail.value.id = this.id;
-        this.employee.updateEmployee(this.employee_detail.value).subscribe((res: any) => {
-          this.snackbar_service.openSnackBar("Success_snackbar", "data updated succesfully");
-          // console.log('createEmployee', res);
-        });
-      }
-      else {
-        this.employee.createEmployee(this.employee_detail.value).subscribe((res: any) => {
-          this.snackbar_service.openSnackBar("Success_snackbar", "data submitted succesfully");
-          // console.log('createEmployee', res);
-        });
-      }
-
-    }
-  };
-
+    console.log(this.employee_detail);
+  }
   getContacts() {
     return (this.employee_detail.get('contacts') as FormArray).controls;
-  };
+  }
   getControls(form: any, i: number) {
     return form.get('contacts').controls[i].controls;
-  };
+  }
   createArray() {
     (this.employee_detail?.get('contacts') as FormArray).push(new FormGroup({
-      address: new FormControl(null),
+      address: new FormControl(null, Validators.required),
       city: new FormControl(null),
       state: new FormControl(null),
       pincode: new FormControl(null),
@@ -151,8 +105,5 @@ export class FormsComponent {
     else {
       this.employee_detail.enable();
     }
-  }
-  canDeactivate() {
-    return this.employee_detail ? this.employee_detail.pristine : true
   }
 }

@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from '../app/core/core.module';
 import { SharedModule } from './shared/shared.module';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
-import { TokenInterceptor } from './shared/services/token.interceptor';
-import { AuthService } from './shared/services/auth.service';
-import { HttpRoutingService } from './shared/services/http-routing.service';
-import { HeaderService } from './shared/services/header.service';
-import { environment } from 'src/environments/environment.development';
 
 @NgModule({
   declarations: [
@@ -26,16 +22,10 @@ import { environment } from 'src/environments/environment.development';
     HttpClientModule,
     AuthModule
   ],
-  providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptor,
-      multi: true
-    }
-
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
+<<<<<<< HEAD
 export class AppModule {
   api = environment.app_url;
   constructor(private http: HttpRoutingService, private headerService: HeaderService) { }
@@ -52,3 +42,6 @@ export class AppModule {
   }
 // app.comp.ts oninitt
 }
+=======
+export class AppModule { }
+>>>>>>> 2474530e9a5f6849a8f8de76b511085ff0becf5d

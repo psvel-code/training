@@ -1,35 +1,39 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { AuthService } from './shared/services/auth.service';
+class MockAuthService {
+  getmsg() {
+    return;
+  }
+}
+fdescribe('AppComponent', () => {
+  let fixture = TestBed.createComponent(AppComponent);
+  let component = fixture.componentInstance;
+  fixture.detectChanges();
+  let authServiceSpy: jasmine.SpyObj<AuthService>;
 
-describe('AppComponent', () => {
   beforeEach(async () => {
+    authServiceSpy = jasmine.createSpyObj('AuthService', ['getmsg']);
     await TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule],
+      providers: [{ provide: AuthService, useClass: MockAuthService }],
+      declarations: [AppComponent],
     }).compileComponents();
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it(`should have as title 'table'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.componentInstance;
-    expect(app.title).toEqual('table');
+    expect(component.title).toEqual('table');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('table app is running!');
+  it('should be call  on ngOnInit()', () => {
+    expect(authServiceSpy.getmsg).toHaveBeenCalled();
   });
 });

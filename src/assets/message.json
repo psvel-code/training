@@ -1,4 +1,4 @@
 {
-  "requird_err": "This Field is required",
+  "field_err": "This Field is required",
   "delete": "Are you sure ?"
 }
