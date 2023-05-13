@@ -50,5 +50,5 @@ export class AppModule {
       'application/json'
     );
   }
-
+// app.comp.ts oninitt
 }

@@ -37,7 +37,6 @@ export class CanDeactiveGuardGuard {
     }
     else {
       console.log(" else  canDeactivate");
-
       return true;
     }
 
