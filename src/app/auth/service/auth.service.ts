@@ -8,14 +8,11 @@ export class AuthService {
   constructor() { }
   isAuthenticated() {
     let token;
-    const current_user = sessionStorage.getItem('currentUserToken');
+    const current_user = JSON.parse(sessionStorage.getItem('currentUserToken') || '');
     console.log("Session_Token", current_user);
 
     token = current_user
     return token != null;
-  }
-  getToken() {
-    return sessionStorage.getItem('currentUserToken');
   }
   logout() {
 

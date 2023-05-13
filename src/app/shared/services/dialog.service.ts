@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../component/dialog/dialog.component';
-import { defaultUrlMatcher } from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
 export class DialogService {
   constructor(public dialog: MatDialog) { }
-
-  openConfirmationDialog(name: any, classname?: string) {
+  openConfirmationDialog(message: any, classname?: string) {
     const dialogRef = this.dialog.open(DialogComponent, {
       data: {
         header: 'Confirmation',
-        content: 'Are you want to delete this record ?',
+        content: message.delete,
         actiontype: 'Confirmation',
-        name: name
       },
       width: "400px",
       autoFocus: false

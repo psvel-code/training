@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { EmployeeService } from 'src/app/shared/services/employee.service';
 
 
 @Component({
@@ -11,26 +10,22 @@ import { EmployeeService } from 'src/app/shared/services/employee.service';
 })
 export class LoginComponent {
   Login_detail!: FormGroup;
-  constructor(private router: Router,
-    private employee: EmployeeService) { }
+  constructor(private router: Router) { }
   ngOnInit(): void {
     this.Login_detail = new FormGroup({
-      email: new FormControl(null, Validators.required,),
+      mail: new FormControl(null, Validators.required,),
       password: new FormControl(null, Validators.required,),
     })
   }
   token = 'retyuiodxcvbn6789o0p';
   user = {
-    email: 'vel',
+    mail: 'vel',
     password: "2312"
   };
   signin() {
-    this.employee.Login(this.Login_detail.value).subscribe((res) => {
-      console.log(res.token);
-      if (res) {
-        sessionStorage.setItem('currentUserToken', res.token);
-        this.router.navigate(['/app/home']);
-      }
-    });
+    if (this.Login_detail.value.mail == this.user.mail && this.Login_detail.value.password == this.user.password) {
+      sessionStorage.setItem('currentUserToken', JSON.stringify({ token: this.token }))
+      this.router.navigate(['app/home']);
+    }
   }
 }

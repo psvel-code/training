@@ -1,3 +1,8 @@
+* {
+  color: black;
+  font-family: Ebrima;
+}
+
 .login_parent {
   height: 100%;
   background-image: url('../../../../assets/images/login_bg.png');
@@ -50,7 +55,7 @@
 }
 
 .form {
-
+  
   width: 370px;
   padding: 12%;
   background-color: white;

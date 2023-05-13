@@ -14,7 +14,7 @@ import { Task2Component } from './component/task2/task2.component';
 import { FormsComponent } from './component/forms/forms.component';
 import { PasswordComponent } from './component/password/password.component';
 import { PipesComponent } from './component/pipes/pipes.component';
-import { HighlightPipe } from './pipe folder/highlight/highlight.pipe';
+// import { HighlightPipe } from './pipe folder/highlight/highlight.pipe';
 import { AppendPipe } from './pipe folder/append/append.pipe';
 import { FilterPipe } from './pipe folder/filter/filter.pipe';
 import { ObservableComponent } from './component/observable/observable.component';
@@ -37,7 +37,7 @@ import { LoadingComponent } from './component/loading/loading.component';
     FormsComponent,
     PasswordComponent,
     PipesComponent,
-    HighlightPipe,
+    // HighlightPipe,
     AppendPipe,
     FilterPipe,
     ObservableComponent,

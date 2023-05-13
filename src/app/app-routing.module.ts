@@ -17,11 +17,14 @@ import { CustomDirectiveComponent } from './core/component/custom-directive/cust
 import { LazyLoadingComponent } from './lazy-loading/lazy-loading/lazy-loading.component';
 import { PreloadingService } from './shared/services/preloading.service';
 import { LoadingComponent } from './core/component/loading/loading.component';
+<<<<<<< HEAD
+=======
 import { LoginComponent } from './auth/component/login/login.component';
 import { AuthGuard } from './auth/service/guard/auth.guard';
 import { AccessGuard } from './auth/service/guard/access.guard';
 import { LogoutGuard } from './auth/service/guard/logout.guard';
 import { CanDeactiveGuardGuard } from './auth/service/guard/can-deactive-guard.guard';
+>>>>>>> 3c5290f6c3cd82bddaf6d336946679876e4b7e07
 
 const routes: Routes = [
   {
@@ -29,7 +32,6 @@ const routes: Routes = [
   },
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
   {
-    // canActivateChild: [AccessGuard]
     path: 'app', component: NavbarComponent, canActivate: [AuthGuard], canActivateChild: [AccessGuard], children: [
       { path: 'home', component: HomeComponent },
       { path: 'table', component: TableComponent },
@@ -40,8 +42,7 @@ const routes: Routes = [
       { path: 'counter', component: CounterComponent },
       { path: 'task1', component: SignupComponent },
       { path: 'task2', component: Task2Component },
-      { path: 'forms', component: FormsComponent, canDeactivate: [CanDeactiveGuardGuard] },
-      { path: 'forms/:mode/:id', component: FormsComponent, canDeactivate: [CanDeactiveGuardGuard] },
+      { path: 'forms', component: FormsComponent, },
       { path: 'pipes', component: PipesComponent },
       { path: 'observables', component: ObservableComponent },
       { path: 'cusdir', component: CustomDirectiveComponent },
@@ -50,12 +51,16 @@ const routes: Routes = [
   },
   // lazy loading
   {
-    path: 'lazy-loading', data: { preload: false },
+    path: 'lazy-loading', data: { applyPreload: false },
     loadChildren: () => import(`./lazy-loading/lazy-loading.module`).then(m => m.LazyLoadingModule)
   },
+<<<<<<< HEAD
+   // pre loading
+=======
   // pre loading
+>>>>>>> 3c5290f6c3cd82bddaf6d336946679876e4b7e07
   {
-    path: 'pre-loading', data: { preload: true },
+    path: 'pre-loading', data: { applyPreload: true },
     loadChildren: () => import(`./pre-loading/pre-loading.module`).then(m => m.PreLoadingModule)
 
   },
